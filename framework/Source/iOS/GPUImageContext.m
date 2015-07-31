@@ -254,8 +254,15 @@ static void *openGLESContextQueueKey;
 #pragma mark -
 #pragma mark Manage fast texture upload
 
-+ (BOOL)supportsFastTextureUpload;
-{
++ (BOOL)supportsFastTextureUpload{
+#if TARGET_OS_IPHONE
+    CGFloat iOSVersion = [[[UIDevice currentDevice] systemVersion] floatValue];
+    if(iOSVersion == 8.3){
+        return NO;
+    }
+#endif
+
+
 #if TARGET_IPHONE_SIMULATOR
     return NO;
 #else
