@@ -256,8 +256,7 @@ static void *openGLESContextQueueKey;
 
 + (BOOL)supportsFastTextureUpload{
 #if TARGET_OS_IPHONE
-    CGFloat iOSVersion = [[[UIDevice currentDevice] systemVersion] floatValue];
-    if(iOSVersion == 8.3){
+    if(([[[UIDevice currentDevice] systemVersion] compare:@"8.3" options:NSNumericSearch] == NSOrderedSame)){
         return NO;
     }
 #endif
